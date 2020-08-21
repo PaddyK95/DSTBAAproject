@@ -1,0 +1,11 @@
+
+module EventLogService{
+
+  interface EventLogs{
+
+     string getStatus();
+     string search();
+     string alert();
+
+  }
+};

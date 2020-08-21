@@ -1,0 +1,46 @@
+ syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "SystemLogsServiceImpl";
+option java_package = "services.systemlogs";
+
+
+package systemlogs;
+
+// Interface exported by the server.
+service SystemLogsService {
+  
+  rpc getStatus(StatusRequest) returns (StringResponse) {}
+  rpc store(StoreRequest) returns (StringResponse) {}
+  rpc createReport(CreateReportRequest) returns (StringResponse) {}
+  rpc createLogSpreadSheet(SpreadSheetRequest) returns (StringResponse) {}
+}
+
+
+message StatusRequest {
+    string request = 1;
+}
+
+message StoreRequest {
+    string request = 1;
+    string key = 2;
+    string value = 3;
+}
+
+message CreateReportRequest {
+    repeated StringRequest multirequest = 1;
+}
+
+message SpreadSheetRequest {
+    string request = 1;
+}
+
+message StringResponse {
+    string response = 1;
+}
+
+message StringRequest {
+    string request = 1;
+}
+
+

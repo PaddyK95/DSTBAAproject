@@ -2,7 +2,7 @@
 
 option java_multiple_files = true;
 option java_outer_classname = "EventlogsServiceImpl";
-option java_package = "devices";
+option java_package = "services.eventlogs";
 
 
 package eventlogs;
@@ -10,22 +10,32 @@ package eventlogs;
 // Interface exported by the server.
 service EventLogsService {
   
-  rpc getStatus(StringRequest) returns (StringResponse) {}
-  rpc search(StringRequest) returns (StringResponse) {}
-
+  rpc getStatus(StatusRequest) returns (StringResponse) {}
+  rpc search(SearchRequest) returns (StringResponse) {}
+  rpc alert(AlertRequest) returns (StringResponse) {}
+  
 }
 
 
-message StringRequest {
-    string val = 1;
+message StatusRequest {
+    string request = 1;
+}
+
+message SearchRequest {
+    string request = 1;
+    string parameter = 2;
+}
+
+message AlertRequest {
+    string request = 1;
+    string email = 2;
+    string message = 3;
 }
 
 message StringResponse {
-    string val = 1;
+    string response = 1;
 }
 
-message MultiStringRequest {
-  repeated StringRequest multirequest = 1;
-}
+
 
 
